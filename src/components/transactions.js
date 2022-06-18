@@ -12,20 +12,28 @@ export const Transactions = () => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
-        fetchTransactions();
+        const subscription = DataStore.observeQuery(
+            Transaction,
+        ).subscribe(snapshot => {
+            const {items, isSynced} = snapshot;
+            setTransactions(items);
+        });
+        //fetchTransactions();
+
+        return () => subscription.unsubscribe();
     }, []);
 
-    async function fetchTransactions() {
-        const models = await DataStore.query(Transaction);
-        setTransactions(models);
-    };
+    // async function fetchTransactions() {
+    //     const models = await DataStore.query(Transaction);
+    //     setTransactions(models);
+    // };
 
     async function addTransaction() {
         if (!formState.label || !formState.amount) {
             return;
         }
         const transaction = {...formState};
-        setTransactions([...transactions, transaction]);
+        // setTransactions([...transactions, transaction]);
         setFormState(initialState);
 
         await DataStore.save(
@@ -35,7 +43,7 @@ export const Transactions = () => {
             })
         );
 
-        await fetchTransactions();
+        // await fetchTransactions();
     }
 
     function setInput(key, value) {
