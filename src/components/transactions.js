@@ -1,6 +1,7 @@
 import { DataStore } from "aws-amplify";
 import { useEffect, useState } from "react"
 import { Transaction } from "../models";
+import { TransactionItemCollection } from '../ui-components';
 
 const initialState = {
     amount: '',
@@ -75,13 +76,7 @@ export const Transactions = () => {
                 onClick={addTransaction}>Create Transaction</button>
             <hr />
             <div>
-                {
-                    transactions.map((transaction) => (
-                        <div key={transaction.id}>
-                            {transaction.label}: {transaction.amount}
-                        </div>
-                    ))
-                }
+                <TransactionItemCollection />
             </div>
         </div>
     );
