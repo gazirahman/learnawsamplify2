@@ -76,7 +76,7 @@ export const Transactions = () => {
                 onClick={addTransaction}>Create Transaction</button>
             <hr />
             <div>
-                <TransactionItemCollection />
+                <TransactionItemCollection style={{alignItems: 'center'}} />
             </div>
         </div>
     );
