@@ -20,6 +20,12 @@
       },
       "auth": {
         "learnawsamplify": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2vmqcxj2zwf4v",
+          "type": "manual"
+        }
       }
     }
   }
