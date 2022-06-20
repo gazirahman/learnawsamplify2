@@ -10,6 +10,14 @@
       "StackName": "amplify-learnawsamplify-dev-13659",
       "StackId": "arn:aws:cloudformation:us-east-1:079742931427:stack/amplify-learnawsamplify-dev-13659/829a33b0-edff-11ec-a4c2-0eed3c9196eb",
       "AmplifyAppId": "d2vmqcxj2zwf4v"
+    },
+    "categories": {
+      "function": {
+        "getBalance": {
+          "deploymentBucketName": "amplify-learnawsamplify-dev-13659-deployment",
+          "s3Key": "amplify-builds/getBalance-4c7776575a5348305033-build.zip"
+        }
+      }
     }
   }
 }
