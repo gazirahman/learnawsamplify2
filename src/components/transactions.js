@@ -1,4 +1,5 @@
 import { DataStore } from "aws-amplify";
+import { API } from "aws-amplify";
 import { useEffect, useState } from "react"
 import { Transaction } from "../models";
 import { TransactionItemCollection } from '../ui-components';
@@ -11,8 +12,17 @@ const initialState = {
 export const Transactions = () => {
     const [formState, setFormState] = useState(initialState);
     const [transactions, setTransactions] = useState([]);
+    const [balance, setBalance] = useState(0);
 
     useEffect(() => {
+        const getBalance = async () => {
+            const results = await API.get('getbalance', '/balance');
+            console.log(results);
+            setBalance(results.balance);
+        }
+
+        getBalance();
+
         const subscription = DataStore.observeQuery(
             Transaction,
         ).subscribe(snapshot => {
@@ -57,9 +67,7 @@ export const Transactions = () => {
     return (
         <div>
             <h1>
-                Balance: {
-                    transactions.reduce((total, transaction) => total + parseFloat(transaction.amount), 0)
-                }
+                Balance: {balance}
             </h1>
             <h2>Transactions</h2>
             <input
