@@ -17,6 +17,9 @@
           "deploymentBucketName": "amplify-learnawsamplify-dev-13659-deployment",
           "s3Key": "amplify-builds/getBalance-4c7776575a5348305033-build.zip"
         }
+      },
+      "auth": {
+        "learnawsamplify": {}
       }
     }
   }

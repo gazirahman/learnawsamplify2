@@ -1,12 +1,19 @@
-import logo from './logo.svg';
+import { Authenticator } from '@aws-amplify/ui-react';
 import './App.css';
 import { Transactions } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <Transactions />
-    </div>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <>
+          <button onClick={signOut}>Log out</button>
+          <div className="App">
+            <Transactions />
+          </div>
+        </>
+      )}
+    </Authenticator>
   );
 }
 
